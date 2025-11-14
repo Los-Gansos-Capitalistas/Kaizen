@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  habittracker-app:
+    build: .
+    container_name: habittracker-prod
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - JWT_SECRET=adiviname_esta_es_una_clave_muy_segura_para_jwt_123456
+      - JWT_EXPIRATION=3600000
+    volumes:
+      - habittracker_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  habittracker_data:
