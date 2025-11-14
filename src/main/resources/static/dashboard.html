@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker - Panel</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Estilos para el planner */
+    .planner-container {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+    }
+
+    .planner-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid #e5e7eb;
+    }
+
+    .planner-header h3 {
+        color: #374151;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .planner-header p {
+        color: #6b7280;
+        font-size: 0.95rem;
+    }
+
+    .planner-fechas, .planner-sin-fecha {
+        margin-bottom: 2.5rem;
+    }
+
+    .planner-fechas h4, .planner-sin-fecha h4 {
+        color: #374151;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .fechas-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .fecha-item {
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 5px solid #3b82f6;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .fecha-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .fecha-header {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .fecha-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .fecha-count {
+        background: rgba(255,255,255,0.2);
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .habitos-fecha {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .habito-planner {
+        display: flex;
+        align-items: center;
+        padding: 1.25rem;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e5e7eb;
+        gap: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .habito-planner:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        transform: translateY(-1px);
+    }
+
+    .habito-planner.completado {
+        background: #f0fdf4;
+        border-color: #10b981;
+    }
+
+    .habito-icon {
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
+
+    .habito-nombre {
+        font-weight: 600;
+        flex: 1;
+        color: #1f2937;
+        font-size: 1rem;
+    }
+
+    .habito-planner.completado .habito-nombre {
+        text-decoration: line-through;
+        color: #6b7280;
+    }
+
+    .habito-categoria, .habito-frecuencia {
+        background: #f3f4f6;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: #6b7280;
+        font-weight: 500;
+    }
+
+    .habito-acciones {
+        display: flex;
+        gap: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .btn-planner-toggle, .btn-planner-editar {
+        border: none;
+        padding: 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-planner-toggle {
+        background: #10b981;
+        color: white;
+    }
+
+    .btn-planner-toggle:hover {
+        background: #059669;
+        transform: scale(1.05);
+    }
+
+    .btn-planner-editar {
+        background: #3b82f6;
+        color: white;
+    }
+
+    .btn-planner-editar:hover {
+        background: #2563eb;
+        transform: scale(1.05);
+    }
+
+    .habitos-lista-sin-fecha {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .planner-vacio {
+        text-align: center;
+        padding: 3rem 2rem;
+        color: #6b7280;
+    }
+
+    .vacio-content {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .vacio-icon {
+        font-size: 3.5rem;
+        display: block;
+        margin-bottom: 1rem;
+        opacity: 0.7;
+    }
+
+    .vacio-content h4 {
+        color: #374151;
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+    }
+
+    .vacio-content p {
+        color: #6b7280;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .planner-resumen {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid #e5e7eb;
+    }
+
+    .resumen-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .resumen-stat {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        background: #f8fafc;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .resumen-stat:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .stat-numero {
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: #374151;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-top: 0.5rem;
+        font-weight: 500;
+    }
+
+    .planner-leyenda {
+        text-align: center;
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Avatar más grande */
+    .user-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid rgba(255,255,255,0.3);
+        object-fit: cover;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .resumen-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .habito-planner {
+            flex-wrap: wrap;
+        }
+        
+        .habito-acciones {
+            margin-left: auto;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+        }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="user-info">
+      <img id="userAvatar" src="images/avatars/ardilla.png" alt="Avatar del usuario" class="user-avatar" />
+      <span id="userName">Usuario</span>
+    </div>
+    <div class="header-actions">
+      <button id="settingsBtn" class="btn-settings" title="Configuración">⚙️</button>
+      <button id="logoutBtn">Salir</button>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <section id="habitsSection">
+      <h2>📝 Mis Hábitos</h2>
+      <div class="section-content">
+        <ul id="habitList" class="habit-list"></ul>
+
+        <div id="habitFormSection" class="form-section">
+          <h3>➕ Agregar Nuevo Hábito</h3>
+          <form id="habitForm" class="habit-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre del hábito *</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej: Hacer ejercicio" />
+              </div>
+              
+              <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <input type="text" id="categoria" name="categoria" placeholder="Ej: Salud, Trabajo, Personal" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="frecuencia">Frecuencia *</label>
+                <select id="frecuencia" name="frecuencia" required>
+                  <option value="">Selecciona frecuencia</option>
+                  <option value="diaria">Diaria</option>
+                  <option value="semanal">Semanal</option>
+                  <option value="mensual">Mensual</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="hora">Hora recordatorio</label>
+                <input type="time" id="hora" name="hora" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fechaObjetivo">Fecha objetivo</label>
+              <input type="date" id="fechaObjetivo" name="fechaObjetivo" />
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <textarea id="descripcion" name="descripcion" placeholder="Describe tu hábito..."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                <span class="btn-icon">💾</span>
+                Guardar Hábito
+              </button>
+              <button type="reset" class="btn btn-secondary">
+                <span class="btn-icon">🔄</span>
+                Limpiar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendarSection">
+      <h2>📅 Planner de Hábitos</h2>
+      <div class="section-content">
+        <div id="calendarContainer">
+          <div class="planner-loading">
+            <p>Cargando planner...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="statsSection">
+      <h2>📊 Estadísticas</h2>
+      <div class="section-content">
+        <div id="statsContainer">
+          <div class="stats-loading">
+            <p>Cargando estadísticas...</p>
+          </div>
+        </div>
+        <div class="stats-tips">
+          <h4>💡 Consejos para mejorar</h4>
+          <ul class="tips-list">
+            <li>Comienza con hábitos pequeños y alcanzables</li>
+            <li>Establece recordatorios para mantener la consistencia</li>
+            <li>Celebra tus progresos, por pequeños que sean</li>
+            <li>Revisa tu planner regularmente</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de Configuración -->
+  <div id="configModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>⚙️ Configuración de Cuenta</h3>
+        <button class="modal-close" onclick="cerrarConfiguracion()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="configForm" class="config-form">
+          <div class="form-group">
+            <label for="configUsername">Nombre de Usuario</label>
+            <input type="text" id="configUsername" class="form-input" placeholder="Tu nombre de usuario" />
+          </div>
+          
+          <div class="form-group">
+            <label>Seleccionar Avatar</label>
+            <div class="avatar-selection">
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="perro.png">
+                <img src="images/avatars/perro.png" alt="Perro" class="avatar-preview">
+                <span class="avatar-name">Perro</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="gato.png">
+                <img src="images/avatars/gato.png" alt="Gato" class="avatar-preview">
+                <span class="avatar-name">Gato</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="ardilla.png" checked>
+                <img src="images/avatars/ardilla.png" alt="Ardilla" class="avatar-preview">
+                <span class="avatar-name">Ardilla</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="erizo.png">
+                <img src="images/avatars/erizo.png" alt="Erizo" class="avatar-preview">
+                <span class="avatar-name">Erizo</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="pez.png">
+                <img src="images/avatars/pez.png" alt="Pez" class="avatar-preview">
+                <span class="avatar-name">Pez</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="nutria.png">
+                <img src="images/avatars/nutria.png" alt="Nutria" class="avatar-preview">
+                <span class="avatar-name">Nutria</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="rata.png">
+                <img src="images/avatars/rata.png" alt="Rata" class="avatar-preview">
+                <span class="avatar-name">Rata</span>
+              </label>
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="oso.png">
+                <img src="images/avatars/oso.png" alt="Oso" class="avatar-preview">
+                <span class="avatar-name">Oso</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Cambiar Contraseña</label>
+            <input type="password" id="newPassword" placeholder="Nueva contraseña" class="form-input">
+            <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" class="form-input" style="margin-top: 0.5rem;">
+            <small class="form-help">Deja en blanco si no quieres cambiar la contraseña</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="notifications">Preferencias de Notificaciones</label>
+            <div class="checkbox-group">
+              <label class="checkbox-option">
+                <input type="checkbox" id="emailNotifications" checked>
+                <span class="checkmark"></span>
+                Notificaciones por correo
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" id="pushNotifications" checked>
+                <span class="checkmark"></span>
+                Notificaciones push
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" id="reminderNotifications" checked>
+                <span class="checkmark"></span>
+                Recordatorios de hábitos
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="cerrarConfiguracion()">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

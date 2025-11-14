@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackHabits - Iniciar Sesión</title>
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo-container" style="justify-content: center; margin-bottom: 15px;">
+                    <img src="/images/logo.png" alt="TrackHabits Logo" class="logo-img">
+                    <span class="logo-text">TrackHabits</span>
+                </div>
+                <p>Construye mejores hábitos, un día a la vez</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Iniciar Sesión</button>
+                <button class="tab-btn" data-tab="register">Registrarse</button>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Recordarme
+                    </label>
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="auth-btn">
+                    <span class="btn-text">Iniciar Sesión</span>
+                    <span class="btn-loading hidden">⏳ Cargando...</span>
+                </button>
+                
+                <div class="auth-divider">
+                    <span>o continúa con</span>
+                </div>
+                
+                <div class="social-auth">
+                    <button type="button" class="social-btn google-btn">
+                        <span>📧</span>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn github-btn">
+                        <span>💻</span>
+                        GitHub
+                    </button>
+                </div>
+            </form>
+
+            <!-- Formulario de Registro -->
+            <form id="registerForm" class="auth-form">
+                <div class="avatar-section">
+                    <div class="avatar-preview" id="avatarPreview">
+                        <img src="/images/avatars/perro.png" alt="Avatar preview" id="avatarPreviewImg">
+                        <div class="avatar-default hidden" id="avatarDefault">👤</div>
+                    </div>
+                    <div class="avatar-options">
+                        <p style="color: #64748b; font-size: 14px; margin-bottom: 15px; text-align: center;">
+                            Elige tu avatar favorito:
+                        </p>
+                        <div class="avatar-grid">
+                            <div class="avatar-option" data-avatar="perro">
+                                <img src="/images/avatars/perro.png" alt="Perro" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🐶</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="gato">
+                                <img src="/images/avatars/gato.png" alt="Gato" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🐱</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="rata">
+                                <img src="/images/avatars/rata.png" alt="Rata" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🐭</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="pez">
+                                <img src="/images/avatars/pez.png" alt="Pez" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🐠</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="ardilla">
+                                <img src="/images/avatars/ardilla.png" alt="Ardilla" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🐿️</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="mapache">
+                                <img src="/images/avatars/mapache.png" alt="Mapache" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🦝</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="nutria">
+                                <img src="/images/avatars/nutria.png" alt="Nutria" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🦦</div>'">
+                            </div>
+                            <div class="avatar-option" data-avatar="oso">
+                                <img src="/images/avatars/oso.png" alt="Oso" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>🐻</div>'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nombre completo *</label>
+                    <input type="text" id="registerName" class="form-input" required placeholder="Tu nombre completo">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="registerEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nombre de usuario *</label>
+                    <input type="text" id="registerUsername" class="form-input" required placeholder="nombredeusuario">
+                    <small class="form-hint">Este será tu nombre público en la aplicación</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="registerPassword" class="form-input" required placeholder="Crea una contraseña segura">
+                    <small class="form-hint">Mínimo 8 caracteres, con letras y números</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirmar contraseña *</label>
+                    <input type="password" id="registerConfirmPassword" class="form-input" required placeholder="Repite tu contraseña">
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="acceptTerms" required>
+                        <span class="checkmark"></span>
+                        Acepto los <a href="#" class="link">términos y condiciones</a> y la <a href="#" class="link">política de privacidad</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-btn">
+                    <span class="btn-text">Crear Cuenta</span>
+                    <span class="btn-loading hidden">⏳ Creando cuenta...</span>
+                </button>
+
+                <div class="auth-footer">
+                    <p>¿Ya tienes una cuenta? <a href="#" class="link" data-tab="login">Inicia sesión aquí</a></p>
+                </div>
+            </form>
+
+            <!-- Demo Info -->
+            <div class="demo-info">
+                <h4>💡 ¿Primera vez por aquí?</h4>
+                <p>Puedes usar estas credenciales de demo:</p>
+                <div class="demo-credentials">
+                    <div><strong>Email:</strong> demo@trackhabits.com</div>
+                    <div><strong>Contraseña:</strong> demo123</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Seguimiento Visual</h3>
+                <p>Mira tu progreso con gráficos y estadísticas detalladas</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Recordatorios Inteligentes</h3>
+                <p>Notificaciones que te ayudan a mantener tu racha</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Logros y Metas</h3>
+                <p>Desbloquea logros y alcanza tus objetivos</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacidad Total</h3>
+                <p>Tus datos están seguros y son solo tuyos</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+</body>
+</html>
