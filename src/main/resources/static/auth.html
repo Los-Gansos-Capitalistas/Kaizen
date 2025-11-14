@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <!-- Lado izquierdo: información visual -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h3>Seguimiento Diario</h3>
+        <p>Registra y monitorea tus hábitos de forma simple y visual.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Progreso Inteligente</h3>
+        <p>Ve tus logros y mejora tus hábitos con recordatorios automáticos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌟</div>
+        <h3>Personalización</h3>
+        <p>Elige tu avatar y haz que tu experiencia sea única.</p>
+      </div>
+    </div>
+
+    <!-- Lado derecho: tarjeta de autenticación -->
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="logo-container">
+          <img src="/images/logo.png" class="logo-img" alt="Logo Habit Tracker">
+          <span class="logo-text">Habit Tracker</span>
+        </div>
+        <p>Comienza a construir hábitos positivos</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button id="loginTab" class="tab-btn active">Iniciar Sesión</button>
+        <button id="registerTab" class="tab-btn">Registrarse</button>
+      </div>
+
+      <!-- Login -->
+      <form id="loginForm" class="auth-form active">
+        <div class="form-group">
+          <label class="form-label">Usuario</label>
+          <input id="loginUsername" type="text" class="form-input" placeholder="Ingresa tu usuario" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Contraseña</label>
+          <input id="loginPassword" type="password" class="form-input" placeholder="Ingresa tu contraseña" required>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            Recordarme
+          </label>
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="auth-btn">
+          <span class="btn-text">Entrar</span>
+          <div class="loading-spinner"></div>
+        </button>
+      </form>
+
+      <!-- Registro -->
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label class="form-label">Usuario</label>
+          <input id="registerUsername" type="text" class="form-input" placeholder="Crea un usuario" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Correo electrónico</label>
+          <input id="registerEmail" type="email" class="form-input" placeholder="Ingresa tu correo" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Contraseña</label>
+          <input id="registerPassword" type="password" class="form-input" placeholder="Crea una contraseña" required>
+        </div>
+
+        <div class="avatar-section">
+          <h4>Selecciona tu avatar</h4>
+          <div class="avatar-grid" id="avatarGrid">
+            <div class="avatar-option" data-avatar="perro.png"><img src="/images/avatars/perro.png"></div>
+            <div class="avatar-option" data-avatar="gato.png"><img src="/images/avatars/gato.png"></div>
+            <div class="avatar-option" data-avatar="nutria.png"><img src="/images/avatars/nutria.png"></div>
+            <div class="avatar-option" data-avatar="pez.png"><img src="/images/avatars/pez.png"></div>
+            <div class="avatar-option" data-avatar="rata.png"><img src="/images/avatars/rata.png"></div>
+            <div class="avatar-option" data-avatar="erizo.png"><img src="/images/avatars/erizo.png"></div>
+            <div class="avatar-option" data-avatar="ardilla.png"><img src="/images/avatars/ardilla.png"></div>
+            <div class="avatar-option" data-avatar="oso.png"><img src="/images/avatars/oso.png"></div>
+          </div>
+          <input type="hidden" id="selectedAvatar">
+        </div>
+
+        <button type="submit" class="auth-btn">
+          <span class="btn-text">Crear cuenta</span>
+          <div class="loading-spinner"></div>
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        <p>¿Ya tienes una cuenta? <a href="#" class="link" id="goToLogin">Inicia sesión</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>
