@@ -1,0 +1,20 @@
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+# Instalar dependencias
+RUN apk add --no-cache curl
+
+# Copiar PRIMERO los archivos individuales
+COPY mvnw .
+COPY pom.xml .
+
+# Luego copiar la carpeta .mvn completa
+COPY .mvn .mvn/
+
+# Dar permisos de ejecución
+RUN chmod +x mvnw
+
+EXPOSE 8080
+
+CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=dev"]
