@@ -7,6 +7,7 @@
 
 - **Java 17** o superior
 - **Maven 3.6** o superior
+- **Docker desktop**
 - **Navegador web moderno** (Chrome, Firefox, Safari, Edge)
 - **Conexión a internet** (para dependencias)
 
@@ -36,29 +37,18 @@ mvn -version
 
 ### **3. Compilar y Ejecutar la Aplicación**
 
-#### **Opción A: Ejecución Directa con Maven**
-```bash
-# En la raíz del proyecto (donde está pom.xml)
-./mvnw spring-boot:run
+#### **Ejecutar Docker**
 
-# En Windows:
-mvnw.cmd spring-boot:run
-```
-
-#### **Opción B: Construir y Ejecutar JAR**
 ```bash
 # Compilar el proyecto
-./mvnw clean package
-
-# Ejecutar el JAR generado
-java -jar target/habittracker-0.0.1-SNAPSHOT.jar
+ docker-compose up --build
 ```
 
 ### **4. Acceder a la Aplicación**
 
 Una vez ejecutada, abre tu navegador y ve a:
 ```
-http://localhost:8080
+http://localhost:8080/auth.html
 ```
 
 ---
