@@ -101,7 +101,7 @@ En la sección " Mis Hábitos", completa el formulario:
 
 ---
 
-## 🗓️ Funcionalidades del Calendario
+##  Funcionalidades del Calendario
 
 ### **Vistas Disponibles**
 - **Vista mensual**: Overview completo
