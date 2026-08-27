@@ -1,7 +1,7 @@
 # Kaizen
-# 📋 Manual de Instalación - HabitTracker
+# Manual de Instalación - HabitTracker
 
-## 🚀 Guía Completa de Instalación y Uso
+##  Guía Completa de Instalación y Uso
 
 ### **Requisitos del Sistema**
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 📥 Instalación Paso a Paso
+##  Instalación Paso a Paso
 
 ### **1. Descargar el Proyecto**
 
@@ -53,7 +53,7 @@ http://localhost:8080/auth.html
 
 ---
 
-## 🎯 Primeros Pasos
+##  Primeros Pasos
 
 ### **1. Registro de Usuario**
 - Haz clic en "Registrarse" en la página de inicio
@@ -66,20 +66,20 @@ http://localhost:8080/auth.html
 ### **2. Configurar tu Perfil**
 - Haz clic en el botón **⚙️** (configuración) en la esquina superior derecha
 - **Selecciona tu avatar** entre las opciones disponibles:
-  - 🐶 Perro
-  - 🐱 Gato  
-  - 🐿️ Ardilla
-  - 🦔 Erizo
-  - 🐠 Pez
-  - 🦦 Nutria
-  - 🐀 Rata
-  - 🐻 Oso
+  -  Perro
+  -  Gato  
+  -  Ardilla
+  -  Erizo
+  -  Pez
+  -  Nutria
+  -  Rata
+  -  Oso
 - **Personaliza tu nombre de usuario**
 - **Guarda los cambios**
 
 ### **3. Crear tu Primer Hábito**
 
-En la sección "📝 Mis Hábitos", completa el formulario:
+En la sección " Mis Hábitos", completa el formulario:
 
 | Campo | Descripción | Ejemplo |
 |-------|-------------|---------|
@@ -94,10 +94,10 @@ En la sección "📝 Mis Hábitos", completa el formulario:
 
 ### **4. Gestionar tus Hábitos**
 
-- **✅ Marcar como completado**: Haz clic en el checkbox
-- **🗑️ Eliminar hábito**: Botón de papelera
-- **📅 Ver en calendario**: Los hábitos aparecen automáticamente
-- **📊 Ver estadísticas**: Progreso en tiempo real
+- ** Marcar como completado**: Haz clic en el checkbox
+- ** Eliminar hábito**: Botón de papelera
+- ** Ver en calendario**: Los hábitos aparecen automáticamente
+- ** Ver estadísticas**: Progreso en tiempo real
 
 ---
 
@@ -109,10 +109,10 @@ En la sección "📝 Mis Hábitos", completa el formulario:
 - **Vista diaria**: Actividades del día
 
 ### **Colores y Símbolos**
-- **🔵 Azul**: Hábitos pendientes
-- **🟢 Verde**: Hábitos completados
-- **📅**: Hábito programado
-- **✅**: Hábito completado
+- ** Azul**: Hábitos pendientes
+- ** Verde**: Hábitos completados
+- ****: Hábito programado
+- ****: Hábito completado
 
 ### **Interacción**
 - **Hover**: Ver detalles del hábito
@@ -121,7 +121,7 @@ En la sección "📝 Mis Hábitos", completa el formulario:
 
 ---
 
-## 📊 Sistema de Estadísticas
+##  Sistema de Estadísticas
 
 ### **Métricas en Tiempo Real**
 - **Total de hábitos**: Número total registrados
@@ -136,7 +136,7 @@ En la sección "📝 Mis Hábitos", completa el formulario:
 
 ---
 
-## ⚙️ Configuración y Personalización
+##  Configuración y Personalización
 
 ### **Preferencias de Usuario**
 - **Cambiar avatar** en cualquier momento
@@ -151,7 +151,7 @@ En la sección "📝 Mis Hábitos", completa el formulario:
 
 ---
 
-## 🔔 Sistema de Notificaciones
+##  Sistema de Notificaciones
 
 ### **Recordatorios Automáticos**
 - **Notificaciones push** del navegador
@@ -163,7 +163,7 @@ La primera vez que uses recordatorios, el navegador pedirá permiso para mostrar
 
 ---
 
-## 🛠️ Solución de Problemas Comunes
+##  Solución de Problemas Comunes
 
 ### **La aplicación no inicia**
 ```bash
@@ -192,7 +192,7 @@ lsof -i :8080               # Linux/Mac
 
 ---
 
-## 📱 Consejos de Uso
+##  Consejos de Uso
 
 ### **Para Mejor Experiencia**
 1. **Comienza con pocos hábitos** (3-5 máximo)
@@ -207,7 +207,7 @@ lsof -i :8080               # Linux/Mac
 
 ---
 
-## 🔒 Seguridad y Datos
+##  Seguridad y Datos
 
 ### **Autenticación**
 - **Tokens JWT** para sesiones seguras
@@ -231,14 +231,6 @@ tail -f logs/application.log
 
 ---
 
-🎉 ¡Listo para Usar!
+¡Listo para Usar!
 
-¡Felicidades! 🎊 Tu HabitTracker está listo para ayudarte a construir mejores hábitos. 
-
-**Próximos pasos recomendados:**
-1. ✅ Configurar tu perfil
-2. ✅ Crear 2-3 hábitos iniciales  
-3. ✅ Probar el sistema de recordatorios
-4. ✅ Explorar el planner y estadísticas
-
-¡Comienza tu journey de hábitos hoy! 🚀
+¡Felicidades! Tu HabitTracker está listo para ayudarte a construir mejores hábitos. 
